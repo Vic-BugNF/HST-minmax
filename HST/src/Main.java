@@ -31,6 +31,6 @@ public class Main {
         System.out.println(list);
         HST tree1 = new HST(list);
 //        tree1.show_D(1);
-        tree1.statistics_D(1,15);
+        tree1.statistics_D(1,10);
     }
 }
