@@ -17,13 +17,13 @@ public class Distribution {
             if(list_cluster.get(i).get_point_num() == 0){
                 continue;
             }
-            System.out.println("cluster : " + j++ + "  ");
+            System.out.println("cluster" + j++ + "  ");
             list_cluster.get(i).show_point();
         }
     }
 
+    //k为cluster中的点的数目
     public void show_cluster(int k){
-        int j = 0;
         int count = 0;
         System.out.println("+++++++++++++++++++++++++++++");
         System.out.println("points number = " + k);
@@ -34,7 +34,6 @@ public class Distribution {
             }
         }
         System.out.println("cluster number = " + count);
-        System.out.println("+++++++++++++++++++++++++++++");
     }
 
     public boolean is_singleton(){
@@ -45,6 +44,5 @@ public class Distribution {
         }
         return true;
     }
-
 
 }

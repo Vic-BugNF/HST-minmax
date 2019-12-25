@@ -46,6 +46,8 @@ public class HST {
                 v_point l_temp = new v_point(list.get(l).getX(),list.get(l).getY());
                 for(cluster s : D[i+1].getList_cluster()){
                     cluster new_c = new cluster();
+                    new_c.setCore(l_temp);
+                    new_c.setBeta(beta);
                     for(v_point p : s.getList()){
                         if (p.getFlag() == 1){
                             continue;
@@ -96,4 +98,19 @@ public class HST {
         return Math.sqrt((a.getX()-b.getX())*(a.getX()-b.getX()) + (a.getY()-b.getY())*(a.getY()-b.getY()));
     }
 
+    //设置D1层每个cluster中 point的最少数目
+    public void set_k(int k){
+        for (int i = 0; i < D[1].getList_cluster().size(); i++) {
+            while(D[1].getList_cluster().get(i).get_point_num() < k){
+                Random r = new Random();
+                double r_x;
+                double r_y;
+                do{
+                    r_x = D[1].getList_cluster().get(i).getCore().getX()+(r.nextDouble()-0.5)*2*D[1].getList_cluster().get(i).getBeta();
+                    r_y = D[1].getList_cluster().get(i).getCore().getY()+(r.nextDouble()-0.5)*2*D[1].getList_cluster().get(i).getBeta();
+                }while (getDistance(new v_point(r_x,r_y),D[1].getList_cluster().get(i).getCore()) <= D[1].getList_cluster().get(i).getBeta());
+                D[1].getList_cluster().get(i).add_point(new v_point(r_x,r_y));
+            }
+        }
+    }
 }
